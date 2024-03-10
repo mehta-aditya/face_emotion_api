@@ -51,8 +51,10 @@ six==1.16.0
 sympy==1.12
 threadpoolctl==3.3.0
 tifffile==2023.7.10
-torch==2.2.1
-torchvision==0.17.1
+--find-links https://download.pytorch.org/whl/cpu/torch_stable.html
+torch==2.0.1
+--find-links https://download.pytorch.org/whl/cpu/torch_stable.html
+torchvision==0.15.2
 tqdm==4.66.2
 typing_extensions==4.10.0
 tzdata==2024.1
