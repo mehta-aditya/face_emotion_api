@@ -3,8 +3,8 @@ from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 from feat.detector import Detector
 import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
 
+ssl._create_default_https_context = ssl._create_unverified_context
 
 UPLOAD_FOLDER = "./images"
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -12,6 +12,8 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 detector = Detector(
     emotion_model="resmasknet",
 )
+
+
 # print(detector)
 
 
@@ -25,7 +27,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def home():
-    return "Audit Assist"
+    return "Autism Assist"
 
 
 def get_max_emotion(emotion_result):
@@ -36,6 +38,7 @@ def get_max_emotion(emotion_result):
     # Get the emotion with the highest count
     max_emotion = emotion_counts.idxmax()
     return max_emotion
+
 
 @app.route('/cue', methods=['POST'])
 def upload_media():
@@ -53,7 +56,6 @@ def upload_media():
         file_path = f'./images/{filename}'
         os.system(f'rm {file_path}')
     return jsonify({'msg': max_emotions})
-
 
 # if __name__ == "__main__":
 #     app.run()
