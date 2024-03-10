@@ -37,7 +37,7 @@ def get_max_emotion(emotion_result):
     max_emotion = emotion_counts.idxmax()
     return max_emotion
 
-@app.route('/media/upload', methods=['POST'])
+@app.route('/cue', methods=['POST'])
 def upload_media():
     if 'file' not in request.files:
         return jsonify({'error': 'media not provided'}), 400
@@ -56,4 +56,5 @@ def upload_media():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run()
