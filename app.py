@@ -12,7 +12,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 detector = Detector(
     emotion_model="resmasknet",
 )
-print(detector)
+# print(detector)
 
 
 def allowed_file(filename):
@@ -25,7 +25,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def home():
-    return "Home"
+    return "Audit Assist"
 
 
 def get_max_emotion(emotion_result):
@@ -48,7 +48,7 @@ def upload_media():
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         single_face_prediction = detector.detect_image(f'./images/{filename}')
-        print(single_face_prediction.emotions)
+        # print(single_face_prediction.emotions)
         max_emotions = get_max_emotion(single_face_prediction.emotions)
         file_path = f'./images/{filename}'
         os.system(f'rm {file_path}')
