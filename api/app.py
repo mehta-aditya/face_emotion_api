@@ -6,7 +6,7 @@ import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-UPLOAD_FOLDER = "./images"
+UPLOAD_FOLDER = ".././images"
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 detector = Detector(
@@ -50,7 +50,7 @@ def upload_media():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        single_face_prediction = detector.detect_image(f'./images/{filename}')
+        single_face_prediction = detector.detect_image(f'.././images/{filename}')
         # print(single_face_prediction.emotions)
         max_emotions = get_max_emotion(single_face_prediction.emotions)
         file_path = f'./images/{filename}'
